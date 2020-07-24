@@ -11,5 +11,12 @@
         android:title="@string/signout"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/notificationOnbtn"
+        android:title="On notificatoin"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/notificationOffbtn"
+        android:title="Off notificatoin"
+        app:showAsAction="never"/>
 
 </menu>

@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,10 +37,23 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
     private CollectionReference collectionReference = db.collection("Journal");
 
+    public static final String channel_id="simplified coding";
+    public static final String CHANNEL_NAME="simplified coding";
+    public static final String CHANNEL_DESC="giving notification";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(channel_id,CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);   //in order to hide elevation from above toolbar
 
