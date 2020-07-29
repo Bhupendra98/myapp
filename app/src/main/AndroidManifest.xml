@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JournalListActivity"></activity>
+        <activity android:name=".OpenActivity"></activity>
+        <activity android:name=".JournalListActivity" />
         <activity android:name=".PostJournalActivity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".LoginActivity" />
@@ -23,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".FirebaseMsgService"
             android:exported="false">
@@ -30,7 +32,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
 
         <meta-data
             android:name="preloaded_fonts"

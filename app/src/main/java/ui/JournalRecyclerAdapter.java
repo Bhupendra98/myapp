@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.self.JournalListActivity;
+import com.example.self.OpenActivity;
 import com.example.self.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,10 +24,13 @@ import java.util.List;
 
 import model.Journal;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecyclerAdapter.ViewHolder> {
 
     private Context context;
     private List<Journal> journalList;
+
 
     public JournalRecyclerAdapter(Context context, List<Journal> journalList) {
         this.context = context;
@@ -42,7 +47,8 @@ public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecycler
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+
 
         final Journal journal=journalList.get(position);
         final String imageUrl;
@@ -82,6 +88,19 @@ public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecycler
         });
 
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setType(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(imageUrl));
+                context.startActivity(intent);
+
+
+            }
+        });
+
+        //hello
 
 
     }
@@ -93,7 +112,7 @@ public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecycler
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title,thought,dateAdded,name;
+        public TextView title,thought,dateAdded,name,newtext;
         public ImageView image;
         public ImageButton shareButton;
 
@@ -101,7 +120,6 @@ public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecycler
 
         public ViewHolder(@NonNull View itemView, final Context ctx) {
             super(itemView);
-
             context=ctx;
             title=itemView.findViewById(R.id.journal_title_list);
             thought=itemView.findViewById(R.id.journal_thought_list);
@@ -109,6 +127,7 @@ public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecycler
             image=itemView.findViewById(R.id.journal_image_list);
             name=itemView.findViewById(R.id.journal_row_username);
             shareButton=itemView.findViewById(R.id.journal_row_sharebutton);
+            newtext=itemView.findViewById(R.id.new_text);
 
 
 

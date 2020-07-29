@@ -66,6 +66,7 @@ public class JournalListActivity extends AppCompatActivity {
         recyclerView =findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
