@@ -1,5 +1,6 @@
 package ui;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -80,12 +81,13 @@ public class JournalRecyclerAdapter extends RecyclerView.Adapter<JournalRecycler
                 Intent intent=new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT,
-                        "Title : "+journal.getTitle());
+                        "Hey there is a good initiative taken by DFS, Check it out by given Url : "+journal.getImageUrl());
                 intent.putExtra(Intent.EXTRA_SUBJECT,
                         "Thought : "+journal.getThought());
                 context.startActivity(intent);
             }
         });
+
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
